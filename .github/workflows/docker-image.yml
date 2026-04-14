@@ -18,13 +18,13 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-
+          
       - name: Build Docker image
         run: |
-          docker build -t my-dockerhub-username/my-app:${{ github.sha }} .
-          docker tag my-dockerhub-username/my-app:${{ github.sha }} my-dockerhub-username/my-app:latest
+          docker build -t ghassen420/my-app:${{ github.sha }} .
+          docker tag ghassen420/my-app:${{ github.sha }} ghassen420/my-app:latest
 
       - name: Push Docker image
         run: |
-          docker push my-dockerhub-username/my-app:${{ github.sha }}
-          docker push my-dockerhub-username/my-app:latest
+          docker push ghassen420/my-app:${{ github.sha }}
+          docker push ghassen420/my-app:latest
