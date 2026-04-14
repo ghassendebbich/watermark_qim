@@ -1,5 +1,5 @@
 """
-changed ssssaeazeazes7: 2023-06-30
+changed  2023-06-30
 Mini-Projet : Sécurisation des images 2D par tatouage numérique basé sur QIM
 =============================================================================
 Implémentation complète du système de tatouage numérique (watermarking) en Python
