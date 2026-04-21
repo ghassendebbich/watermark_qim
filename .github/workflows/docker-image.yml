@@ -1,13 +1,14 @@
 name: dockerhub_push
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["test"]
+    types:
+      - completed
 
 jobs:
   build:
-    # needs: test # Cette étape démarre après la réussite des tests
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -18,7 +19,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          
+
       - name: Build Docker image
         run: |
           docker build -t ghassen420/my-app:${{ github.sha }} .
