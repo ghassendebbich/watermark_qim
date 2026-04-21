@@ -1,5 +1,5 @@
 """
-Mini-Projet : Sécurisation des images 2D par tatouage numérique basé sur QIM
+Mini-Projet : Sécurisation des images-2D par tatouage numérique basé sur QIM
 =============================================================================
 Implémentation complète du système de tatouage numérique (watermarking) en Python
 utilisant la méthode QIM (Quantization Index Modulation) dans le domaine DCT 2D.
