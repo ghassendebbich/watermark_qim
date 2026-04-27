@@ -12,6 +12,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install numpy matplotlib scipy Pillow scikit-image opencv-python-headless pytest flask
+
+      - name: Run tests
+        run: python3 -m pytest test_watermark.py --tb=short -v
+
   build:
     needs: test
     runs-on: ubuntu-latest
@@ -44,5 +55,5 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'watermark-qim-rg'
+          app-name: 'watermark-qim-app'
           images: '${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest'
