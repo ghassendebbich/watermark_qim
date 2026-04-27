@@ -27,10 +27,10 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/myapp:${{ github.sha }} .
-          docker tag ${{ secrets.DOCKER_HUB_USERNAME }}/myapp:${{ github.sha }} ${{ secrets.DOCKER_HUB_USERNAME }}/myapp:latest
-          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/myapp:${{ github.sha }}
-          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/myapp:latest
+          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:${{ github.sha }} .
+          docker tag ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:${{ github.sha }} ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
 
   deploy:
     needs: build
@@ -45,4 +45,4 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'watermark-qim-rg'
-          images: '${{ secrets.DOCKER_HUB_USERNAME }}/myapp:latest'
+          images: '${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest'
